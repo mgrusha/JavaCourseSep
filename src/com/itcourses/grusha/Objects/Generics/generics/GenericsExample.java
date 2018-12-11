@@ -1,36 +1,25 @@
 package com.itcourses.grusha.Objects.Generics.generics;
 
+import com.itcourses.grusha.Objects.Collections.Cat;
 import com.itcourses.grusha.Objects.Interfaces.Dog;
 import com.itcourses.grusha.Objects.Interfaces.Robot;
+import com.itcourses.grusha.Objects.Interfaces.Speakable;
 
 
 public class GenericsExample {
     public static void main(String args[]) {
 
-
-        // Create arrays of Integer, Double and Character
-        Integer[] intArray = { 1, 2, 3, 4, 5 };
-        Double[] doubleArray = { 1.1, 2.2, 3.3, 4.4 };
-        Character[] charArray = { 'H', 'E', 'L', 'L', 'O' };
-
-        System.out.println("Array integerArray contains:");
-        printArray(intArray);   // pass an Integer array
-
-        System.out.println("Array doubleArray contains:");
-        printArray(doubleArray);   // pass a Double array
-
-        System.out.println("Array characterArray contains:");
-        printArray(charArray);   // pass a Character array
-
-        Box<Robot> catBox = new Box<>();
-        catBox.add(new Robot());
+        Box<Cat> catBox = new Box<>();
+        catBox.add(new Cat(true,"Milk",3));
+        System.out.println(catBox.get().speak());
       //  catBox.add(new Dog());
 
-        BoxThatCanSpeak<Dog> dogBox = new BoxThatCanSpeak<Dog>();
-        dogBox.add(new Dog());
-        dogBox.saySmthFromBox();
+        BoxThatCanSpeak<Robot> box = new BoxThatCanSpeak<Robot>();
+       // box.add(new Dog());
+        box.add(new Robot());
+        System.out.println(box.saySmthFromBox());
 
-        System.out.println("We have in Box" + catBox.getBoxTypeName());
+      //  System.out.println("We have in Box" + catBox.getBoxTypeName());
 
 
     }
