@@ -4,7 +4,14 @@ import com.itcourses.grusha.Objects.Interfaces.Dog;
 import com.itcourses.grusha.Objects.Interfaces.Robot;
 
 public class GenericsExample {
-    public static void main(String args[]) {
+    public static void main(String... args) {
+        int i = 1;
+        Integer refI = new Integer(i);
+        System.out.println(1+2+""+3+4);
+
+        refI = Integer.parseInt(""+1+2+3+4);
+
+        System.out.println(refI);
 
 
         // Create arrays of Integer, Double and Character
@@ -19,27 +26,20 @@ public class GenericsExample {
         printArray(doubleArray);   // pass a Double array
 
         System.out.println("Array characterArray contains:");
-        printArray(charArray);   // pass a Character array
+     //   printArray(charArray);   // pass a Character array
 
-        Box<Robot> catBox = new Box<>();
-        catBox.add(new Robot());
-      //  catBox.add(new Dog());
-
-        BoxThatCanSpeak<Dog> dogBox = new BoxThatCanSpeak<Dog>();
-        dogBox.add(new Dog());
-        dogBox.saySmthFromBox();
-
-        System.out.println("We have in Box" + catBox.getBoxTypeName());
+        System.out.println("Print one element");
+       // printArray(new String("12"));
+     }
 
 
-    }
-
-
-    public static <E> void printArray(E[] inputArray) {
+    public static <E extends Number> void printArray(E... inputArray) {
         // Display array elements
+        float sum = 0;
         for (E element : inputArray) {
-            System.out.print(element);
+            sum = element.floatValue()+element.floatValue();
+            //System.out.print(sum);
         }
-        System.out.println();
+        System.out.println(sum);
     }
 }
