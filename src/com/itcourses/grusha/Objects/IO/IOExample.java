@@ -22,13 +22,13 @@ public class IOExample {
         inFile.close();
 
         InputStream inUrl = new URL("http://google.com").openStream();
-           Read.readFullyByArray(inUrl);
+       //    Read.readFullyByArray(inUrl);
 
         InputStream inArray = new ByteArrayInputStream(new byte[]{65, 66, 67, 66});
 
         //readFullyByByte(inFile);
-        //readFullyByArray(inFile);
-        //Read.readFullyByArrayWithLength(inFile);
+        //readFullyByArray(inArray);
+        Read.readFullyByArrayWithLength(inArray);
         //System.out.println("\n\n");
 
         //InputStream inUrl = new URL("http://google.com").openStream();
