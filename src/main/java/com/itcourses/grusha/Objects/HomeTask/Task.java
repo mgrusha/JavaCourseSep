@@ -13,7 +13,7 @@ public class Task {
         ISerializier serializer = new GsonSerializer("D:\\trainings\\Java2018_2\\MovieHomeTask");
         serializer.serialize(filmList);
 
-        List<Film> newFilmList = serializer.deserialize("D:\\trainings\\Java2018_2\\MovieHomeTask");
+        List<Film> newFilmList = serializer.deserialize();
 
         Map<String, Long> oscars =
                 newFilmList.stream().collect(Collectors.groupingBy(x -> x.getDirector(), Collectors.counting()));
