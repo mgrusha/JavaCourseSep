@@ -21,14 +21,16 @@ public class HtmlFilmParser {
 
         Elements years = doc.select("#mainBodyWrapper > center:nth-child(9) > table > tbody > tr > td:nth-child(1) > center");
         years.remove(0);
-        Elements filmNames = doc.select("#mainBodyWrapper > center > table > tbody > tr > td> b > font");
+        Elements filmNames = doc.select("#mainBodyWrapper > center > table > tbody > tr > td > b > font");
         Elements directors = doc.select("#mainBodyWrapper > center> table > tbody > tr > td:nth-child(3) > font");
         for (int i = 0; i < years.size(); i++) {
             Film tmpFilm = new Film();
             tmpFilm.setYear(Integer.parseInt(years.get(i).text()));
             tmpFilm.setFilmName(filmNames.get(i).text());
             String replaceableValue = "\\*";
-            tmpFilm.setDirector(directors.get(i).text().replaceAll(replaceableValue,""));
+            String directorName = directors.get(i).text().replaceAll(replaceableValue, "");
+            tmpFilm.setDirectorFirstName(directorName.substring(0, directorName.indexOf(" ")));
+            tmpFilm.setDirectorLastName(directorName.substring(directorName.indexOf(" ") + 1));
             films.add(tmpFilm);
         }
         return films;

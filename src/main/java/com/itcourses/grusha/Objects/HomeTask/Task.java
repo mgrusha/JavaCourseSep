@@ -16,7 +16,7 @@ public class Task {
         List<Film> newFilmList = serializer.deserialize();
 
         Map<String, Long> oscars =
-                newFilmList.stream().collect(Collectors.groupingBy(x -> x.getDirector(), Collectors.counting()));
+                newFilmList.stream().collect(Collectors.groupingBy(x -> (x.getDirectorFirstName() + " " + x.getDirectorLastName()), Collectors.counting()));
 
         long maxOscars = Collections.max(oscars.values());
 
@@ -25,5 +25,6 @@ public class Task {
                 .map(entry -> entry.getKey())
                 .collect(Collectors.toList()));
 
+        System.out.println(newFilmList.stream().filter(film -> film.year > 1965 && film.year < 2000).collect(Collectors.toList()));
     }
 }

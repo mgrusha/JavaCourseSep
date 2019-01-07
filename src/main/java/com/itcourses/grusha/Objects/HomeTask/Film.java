@@ -3,7 +3,8 @@ package com.itcourses.grusha.Objects.HomeTask;
 public class Film {
     public int year;
     public String filmName;
-    public String director;
+    public String directorFirstName;
+    public String directorLastName;
 
     public int getYear() {
         return year;
@@ -21,11 +22,24 @@ public class Film {
         this.filmName = filmName;
     }
 
-    public String getDirector() {
-        return director;
+    public void setDirectorFirstName(String directorFirstName) {
+        this.directorFirstName = directorFirstName;
     }
 
-    public void setDirector(String director) {
-        this.director = director;
+    public String getDirectorFirstName() {
+        return directorFirstName;
+    }
+
+    public void setDirectorLastName(String directorLastName) {
+        this.directorLastName = directorLastName;
+    }
+
+    public String getDirectorLastName() {
+        return directorLastName;
+    }
+
+    @Override
+    public String toString() {
+        return String.format("%d [%s] [%s %s]", filmName, year, directorLastName, directorFirstName);
     }
 }
