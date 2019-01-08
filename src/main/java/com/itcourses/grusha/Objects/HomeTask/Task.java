@@ -16,15 +16,25 @@ public class Task {
         List<Film> newFilmList = serializer.deserialize();
 
         Map<String, Long> oscars =
-                newFilmList.stream().collect(Collectors.groupingBy(x -> (x.getDirectorFirstName() + " " + x.getDirectorLastName()), Collectors.counting()));
+                newFilmList.
+                stream().
+                collect(
+         Collectors.groupingBy(film -> (film.getDirectorFirstName() + " " + film.getDirectorLastName()), Collectors.counting()));
+
+        System.out.println("-------------------------");
+        System.out.println(oscars);
+        System.out.println("-------------------------");
 
         long maxOscars = Collections.max(oscars.values());
 
-        System.out.println(oscars.entrySet().stream()
+        System.out.println(
+                oscars.entrySet().
+                        stream()
                 .filter(entry -> entry.getValue() == maxOscars)
                 .map(entry -> entry.getKey())
                 .collect(Collectors.toList()));
 
-        System.out.println(newFilmList.stream().filter(film -> film.year > 1965 && film.year < 2000).collect(Collectors.toList()));
+       System.out.println(
+               newFilmList.stream().filter(film -> film.year > 1965 && film.year < 2000).collect(Collectors.toList()));
     }
 }
