@@ -1,0 +1,1 @@
+select t.trackid ,t.Name, ifnull(t.Composer,"Unkown") as Composer, t.UnitPrice  from genres g, tracks t  where g.Name = "Pop" and g.GenreId = t.GenreId 

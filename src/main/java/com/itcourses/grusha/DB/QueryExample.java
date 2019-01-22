@@ -6,7 +6,7 @@ import java.util.HashSet;
 public class QueryExample {
 
     private static HashSet<Connection> availibleConnections = new HashSet<>();
-    public static String url = "jdbc:sqlite:D:/trainings/Java2018_1/db/chinook.db";
+    public static String url = "jdbc:sqlite:D:/trainings/db/chinook.db";
 
     public static void main(String[] args) throws SQLException {
         connect();
