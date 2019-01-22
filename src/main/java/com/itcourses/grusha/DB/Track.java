@@ -1,9 +1,12 @@
 package com.itcourses.grusha.DB;
 
+//@Exclude(name = "Paulo Levi/W. Rangel,Paulo Levi/W. Rangel")
 public class Track {
 
     private String name;
+
     private String composer;
+//    @AdditionalPrice(startWith = "Im",priceAdded=1)
     private Double price;
 
     public void setName(String name) {
