@@ -96,6 +96,7 @@ public class QueryExample {
         return connection;
     }
 
+    @Deprecated
     public static boolean retrieveConnection(Connection connection){
         return availibleConnections.add(connection);
     }
