@@ -23,7 +23,7 @@ public class HtmlFilmParser {
         years.remove(0);
         Elements filmNames = doc.select("#mainBodyWrapper > center > table > tbody > tr > td > b > font");
         Elements directors = doc.select("#mainBodyWrapper > center> table > tbody > tr > td:nth-child(3) > font");
-        for (int i = 0; i < years.size(); i++) {
+        for (int i = 0; i < years.size()-1; i++) {
             Film tmpFilm = new Film();
             tmpFilm.setYear(Integer.parseInt(years.get(i).text()));
             tmpFilm.setFilmName(filmNames.get(i).text());

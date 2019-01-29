@@ -6,6 +6,10 @@ public class Cat extends Animal {
 
     private String color;
 
+    public Cat(){
+        super(true,"Black",2);
+    }
+
     public Cat(boolean veg, String food, int legs) {
         super(veg, food, legs);
         this.color = "White";

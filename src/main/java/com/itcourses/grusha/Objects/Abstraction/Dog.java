@@ -1,5 +1,8 @@
 package com.itcourses.grusha.Objects.Abstraction;
 
+import com.itcourses.grusha.Annotations.TestAnnotations;
+
+@TestAnnotations(doublecheck = true,msg = "Dog")
 public class Dog extends Animal {
 
     private int tailLength;

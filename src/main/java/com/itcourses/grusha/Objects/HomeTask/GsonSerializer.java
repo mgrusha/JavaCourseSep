@@ -17,14 +17,7 @@ public class GsonSerializer implements ISerializier {
     @Override
     public void serialize(List<Film> filmList) {
         for (Film film : filmList) {
-            String filePath = (path + "\\" + film.getFilmName().replaceAll("[\\\\/:*?\"<>|]", "") + ".json");
-            try (Writer writer = new FileWriter(filePath)) {
-                Gson gson = new GsonBuilder().create();
-                gson.toJson(film, writer);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-
+            new ThreadWriting(path,film).run();
         }
 
     }
@@ -43,5 +36,26 @@ public class GsonSerializer implements ISerializier {
             }
         }
         return films;
+    }
+}
+
+class ThreadWriting extends Thread{
+
+    private final String path;
+    private final Film film;
+
+    public ThreadWriting(String path, Film film){
+        this.path = path;
+        this.film = film;
+    }
+    @Override
+    public void run() {
+        String filePath = (path + "\\" + film.getFilmName().replaceAll("[\\\\/:*?\"<>|]", "") + ".json");
+        try (Writer writer = new FileWriter(filePath)) {
+            Gson gson = new GsonBuilder().create();
+            gson.toJson(film, writer);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

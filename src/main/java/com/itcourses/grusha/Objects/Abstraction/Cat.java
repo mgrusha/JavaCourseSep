@@ -1,6 +1,8 @@
 package com.itcourses.grusha.Objects.Abstraction;
 
+import com.itcourses.grusha.Annotations.TestAnnotations;
 
+@TestAnnotations(doublecheck = false,msg = "cat")
 public class Cat extends Animal{
 
     private String color;

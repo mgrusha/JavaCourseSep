@@ -42,9 +42,9 @@ class CounterIncRunnable implements Runnable {
 
 
 class MyCounter {
-    private int c = 0;
+    private volatile int c = 0;
 
-    public synchronized void  increment() {
+    public  void  increment() {
        c=c+1;
     }
 
