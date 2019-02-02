@@ -6,6 +6,7 @@ import com.google.gson.GsonBuilder;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.*;
 
 public class GsonSerializer implements ISerializier {
     private final String path;
@@ -15,11 +16,14 @@ public class GsonSerializer implements ISerializier {
     }
 
     @Override
-    public void serialize(List<Film> filmList) {
+    public void serialize(List<Film> filmList) throws ExecutionException, InterruptedException {
+        ExecutorService service = Executors.newFixedThreadPool(10);
         for (Film film : filmList) {
-            new ThreadWriting(path,film).run();
+            //new ThreadWriting(path, film).run();
+            Future result = service.submit(new ThreadWriting(path, film));
+            result.get();
         }
-
+        service.shutdown();
     }
 
     @Override
@@ -39,15 +43,16 @@ public class GsonSerializer implements ISerializier {
     }
 }
 
-class ThreadWriting extends Thread{
+class ThreadWriting extends Thread {
 
     private final String path;
     private final Film film;
 
-    public ThreadWriting(String path, Film film){
+    public ThreadWriting(String path, Film film) {
         this.path = path;
         this.film = film;
     }
+
     @Override
     public void run() {
         String filePath = (path + "\\" + film.getFilmName().replaceAll("[\\\\/:*?\"<>|]", "") + ".json");

@@ -1,6 +1,6 @@
 package com.itcourses.grusha.Objects.Interfaces;
 
-public class Cat extends Animal implements Speakable{
+public class Cat extends Animal {
 
     private String color;
 
@@ -29,7 +29,7 @@ public class Cat extends Animal implements Speakable{
         this.color = color;
     }
 
-    @Override
+
     public String speak() {
         return "Meow-meow";
     }

@@ -3,10 +3,11 @@ package com.itcourses.grusha.Objects.HomeTask;
 import java.io.IOException;
 import java.util.*;
 import java.util.Map.Entry;
+import java.util.concurrent.ExecutionException;
 import java.util.stream.Collectors;
 
 public class Task {
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws IOException, ExecutionException, InterruptedException {
         List<Film> filmList = new HtmlFilmParser("https://www.filmsite.org/bestpics4.html").getFilms();
 
         ISerializier serializer = new GsonSerializer("D:\\trainings\\MovieHomeTask");
